@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusPulse Demo - AI-Powered Athletic Performance Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .demo-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .demo-section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, #f8f9ff, #e8ecff);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .metrics-display {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(145deg, #f0f4ff, #dfe7ff);
+            border-radius: 10px;
+            min-width: 120px;
+        }
+
+        .metric .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .metric .label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .demo-video {
+            background: #000;
+            border-radius: 10px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-video::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            opacity: 0.8;
+        }
+
+        .demo-video .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 1rem 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-badge {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .flow-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            min-width: 150px;
+        }
+
+        .flow-step .icon {
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .metrics-display {
+                justify-content: center;
+            }
+            
+            .flow-arrow {
+                display: none;
+            }
+        }
+
+        .demo-interactive {
+            background: linear-gradient(145deg, #f8f9ff, #e8ecff);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .pose-visualization {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pose-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+            animation: loading 3s infinite;
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>CampusPulse</h1>
+            <p>AI-Powered Athletic Performance Analysis Platform</p>
+        </header>
+
+        <section class="demo-section">
+            <h2>🎯 Real-Time Performance Analysis</h2>
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <div class="icon">📱</div>
+                    <h4>Capture</h4>
+                    <p>Record technique with mobile device</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="icon">🤖</div>
+                    <h4>Analyze</h4>
+                    <p>AI processes 17 keypoints in real-time</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="icon">📊</div>
+                    <h4>Score</h4>
+                    <p>Instant performance feedback</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="icon">🏆</div>
+                    <h4>Improve</h4>
+                    <p>Track progress over time</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>📱 Mobile Demo Simulation</h2>
+            <div class="demo-interactive">
+                <h3>Live Pose Detection</h3>
+                <div class="pose-visualization">
+                    <div class="pose-dots">
+                        <!-- Simulated pose keypoints -->
+                        <div class="dot" style="top: 20%; left: 50%;"></div>
+                        <div class="dot" style="top: 25%; left: 45%;"></div>
+                        <div class="dot" style="top: 25%; left: 55%;"></div>
+                        <div class="dot" style="top: 40%; left: 35%;"></div>
+                        <div class="dot" style="top: 40%; left: 65%;"></div>
+                        <div class="dot" style="top: 60%; left: 25%;"></div>
+                        <div class="dot" style="top: 60%; left: 75%;"></div>
+                        <div class="dot" style="top: 50%; left: 45%;"></div>
+                        <div class="dot" style="top: 50%; left: 55%;"></div>
+                        <div class="dot" style="top: 80%; left: 40%;"></div>
+                        <div class="dot" style="top: 80%; left: 60%;"></div>
+                    </div>
+                    <div style="position: relative; z-index: 2;">
+                        17 Keypoints Tracked • 30 FPS • On-Device Processing
+                    </div>
+                </div>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <p><strong>Analyzing movement patterns...</strong></p>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>📊 Performance Metrics</h2>
+            <div class="metrics-display">
+                <div class="metric">
+                    <span class="value">87.3</span>
+                    <div class="label">Overall Score</div>
+                </div>
+                <div class="metric">
+                    <span class="value">84.2%</span>
+                    <div class="label">Form Consistency</div>
+                </div>
+                <div class="metric">
+                    <span class="value">91.1%</span>
+                    <div class="label">Movement Efficiency</div>
+                </div>
+                <div class="metric">
+                    <span class="value">88.7%</span>
+                    <div class="label">Balance Score</div>
+                </div>
+                <div class="metric">
+                    <span class="value">12.3s</span>
+                    <div class="label">Analysis Time</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>🏆 Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">AI</div>
+                    <h3>On-Device ML</h3>
+                    <p>TensorFlow Lite models provide instant analysis without internet dependency</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy First</h3>
+                    <p>Video processing happens locally. No video data leaves your device</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-Time</h3>
+                    <p>30 FPS pose detection with sub-second analysis results</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Long-term performance analytics and improvement insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏫</div>
+                    <h3>University Network</h3>
+                    <p>Team analytics and cross-institutional benchmarking</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Video Forensics</h3>
+                    <p>Advanced authenticity verification and manipulation detection</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>🔧 Technology Stack</h2>
+            <div class="tech-stack">
+                <span class="tech-badge">Flutter 3.16</span>
+                <span class="tech-badge">TensorFlow Lite</span>
+                <span class="tech-badge">FastAPI</span>
+                <span class="tech-badge">React 18</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">Redis</span>
+                <span class="tech-badge">Docker</span>
+                <span class="tech-badge">AWS/GCP</span>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2>🎥 Demo Video Placeholder</h2>
+            <div class="demo-video">
+                <div class="content">
+                    <h3>Interactive Demo Video</h3>
+                    <p>See CampusPulse in action with real athletes and coaches</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                        Duration: 5 minutes | Basketball shooting form analysis
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Transform Athletic Performance?</h2>
+            <p style="font-size: 1.2rem; margin: 1rem 0 2rem;">
+                Join universities worldwide in revolutionizing sports analytics
+            </p>
+            <a href="#" class="cta-button" onclick="alert('Demo request submitted! We will contact you within 24 hours.')">
+                Request Live Demo
+            </a>
+            <a href="#" class="cta-button" onclick="alert('Trial access granted! Check your email for setup instructions.')">
+                Start Free Trial
+            </a>
+            <div style="margin-top: 2rem;">
+                <p><strong>Contact:</strong> demo@campuspulse.com | 1-800-CAMPUSPULSE</p>
+            </div>
+        </section>
+
+        <footer style="text-align: center; padding: 2rem; color: white; opacity: 0.8;">
+            <p>&copy; 2024 CampusPulse. All rights reserved.</p>
+            <p>AI-Powered Athletic Performance Analysis Platform</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple interactivity for demo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate metrics on page load
+            const metrics = document.querySelectorAll('.metric .value');
+            metrics.forEach(metric => {
+                const finalValue = metric.textContent;
+                metric.textContent = '0';
+                
+                setTimeout(() => {
+                    let current = 0;
+                    const target = parseFloat(finalValue) || 0;
+                    const increment = target / 50;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            metric.textContent = finalValue;
+                            clearInterval(timer);
+                        } else {
+                            metric.textContent = Math.floor(current).toString() + 
+                                (finalValue.includes('%') ? '%' : 
+                                 finalValue.includes('s') ? 's' : '');
+                        }
+                    }, 30);
+                }, 1000);
+            });
+
+            // Add click handlers for interactive elements
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const feature = this.querySelector('h3').textContent;
+                    alert(`Learn more about ${feature}:\n\nThis feature demonstrates CampusPulse's advanced capabilities in athletic performance analysis.`);
+                });
+            });
+
+            // Simulate loading progress
+            const loadingBars = document.querySelectorAll('.loading-progress');
+            loadingBars.forEach(bar => {
+                bar.style.animation = 'loading 4s infinite';
+            });
+        });
+
+        // Add some interactive demo functionality
+        function showTechDetails(tech) {
+            const details = {
+                'Flutter': 'Cross-platform mobile development with native performance',
+                'TensorFlow Lite': 'On-device machine learning for real-time pose detection',
+                'FastAPI': 'High-performance Python web framework for APIs',
+                'React': 'Modern web UI library for responsive dashboards',
+                'PostgreSQL': 'Robust relational database with JSONB support',
+                'Redis': 'In-memory caching and job queue management',
+                'Docker': 'Containerized deployment for scalability',
+                'AWS/GCP': 'Cloud infrastructure for global accessibility'
+            };
+            
+            alert(details[tech] || 'Advanced technology powering CampusPulse');
+        }
+
+        // Demo interactivity
+        setInterval(() => {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach(dot => {
+                const randomX = Math.random() * 2 - 1; // -1 to 1
+                const randomY = Math.random() * 2 - 1; // -1 to 1
+                dot.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            });
+        }, 100);
+    </script>
+</body>
+</html>

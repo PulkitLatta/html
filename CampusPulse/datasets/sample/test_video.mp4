@@ -1,0 +1,28 @@
+This file represents a placeholder for test_video.mp4.
+
+In a real implementation, this would be a video file containing:
+- Duration: 5 seconds
+- Format: MP4 (H.264 codec)
+- Resolution: 1920x1080 
+- Frame rate: 30 FPS
+- Content: Basketball shooting technique demonstration
+- File size: Approximately 2-3 MB
+
+The video would show an athlete performing a basketball shooting motion
+with clear visibility of all body keypoints for pose detection analysis.
+
+Camera setup:
+- Single front-facing camera
+- Athlete centered in frame
+- Good lighting conditions
+- Minimal background distractions
+- Stable camera position
+
+This placeholder file is used for testing and development purposes
+where actual video files are not available in the repository.
+
+To use actual video data:
+1. Replace this file with test_video.mp4
+2. Ensure video meets the specifications above
+3. Verify pose detection works with the video content
+4. Update file paths in related scripts and tests

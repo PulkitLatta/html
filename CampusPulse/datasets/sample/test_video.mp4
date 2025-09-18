@@ -1,0 +1,29 @@
+# This is a placeholder for a test video file
+# In a real implementation, this would be an actual MP4 video file
+# 
+# Sample video specifications:
+# - Duration: 5 seconds
+# - Resolution: 720p (1280x720)
+# - Frame rate: 30 FPS
+# - Exercise: Squat demonstration
+# - Subject: Athlete performing 3 squats with good form
+# 
+# The video would contain:
+# 1. Setup phase (0-1 seconds): Athlete in standing position
+# 2. Descent phase (1-2 seconds): Squatting down movement
+# 3. Hold phase (2-2.5 seconds): Bottom position hold
+# 4. Ascent phase (2.5-3.5 seconds): Standing back up
+# 5. Repeat phases for additional reps
+# 
+# File size: Approximately 2-5 MB
+# Format: MP4 with H.264 video codec
+# 
+# To use real video files in production:
+# 1. Record exercise demonstrations with proper lighting
+# 2. Ensure clear visibility of full body movement
+# 3. Use stable camera positioning
+# 4. Include multiple angles if possible
+# 5. Annotate with ground truth technique labels
+# 
+# Note: Binary video files are not included in this text-based codebase
+# In a real deployment, you would replace this placeholder with actual video files

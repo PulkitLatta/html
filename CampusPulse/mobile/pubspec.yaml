@@ -1,0 +1,37 @@
+name: campuspulse
+description: A fitness tracking app for campus athletics
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  camera: ^0.10.0+4
+  tflite_flutter: ^0.9.0
+  sqflite: ^2.3.0
+  dio: ^5.3.2
+  shared_preferences: ^2.2.2
+  lottie: ^2.7.0
+  provider: ^6.0.5
+  permission_handler: ^11.0.1
+  path_provider: ^2.1.1
+  crypto: ^3.0.3
+  connectivity_plus: ^4.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: ^5.4.2
+  build_runner: ^2.4.7
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/models/
+    - assets/lottie/

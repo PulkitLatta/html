@@ -1,0 +1,76 @@
+.App {
+  text-align: left;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Chart container styling */
+.recharts-wrapper {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom map styles */
+.leaflet-container {
+  height: 400px;
+  border-radius: 0.5rem;
+}
+
+/* Table hover effects */
+.table-row:hover {
+  @apply bg-gray-50;
+}
+
+/* Status badge styles */
+.status-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.status-badge.active {
+  @apply bg-green-100 text-green-800;
+}
+
+.status-badge.inactive {
+  @apply bg-red-100 text-red-800;
+}
+
+.status-badge.pending {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.status-badge.completed {
+  @apply bg-blue-100 text-blue-800;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-shadow duration-200 hover:shadow-md;
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+}
+
+.gradient-error {
+  background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%);
+}
